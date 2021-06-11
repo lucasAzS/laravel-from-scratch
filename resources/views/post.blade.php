@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,10 +8,19 @@
     <link rel="stylesheet" href="/app.css">
     <title>My Blog</title>
 </head>
+
 <body>
 
-    <?= $post ?>
+    <article>
+
+        <h1><?= $post->title ?></h1>
+
+        <div>
+            <?= $post->body ?>
+        </div>
+    </article>
     <a href="/">Back</a>
 
 </body>
+
 </html>

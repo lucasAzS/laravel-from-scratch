@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,12 +8,25 @@
     <link rel="stylesheet" href="/app.css">
     <title>My Blog</title>
 </head>
+
 <body>
 
     <?php foreach ($posts as $post): ?>
-    <article>
-        <?= $post ?>
-    </article>
+        <article>
+            <h1>
+                <a href="/posts/<?= $post->slug ?>">
+                    <?= $post->title ?>
+
+                </a>
+            </h1>
+            <p><?= $post->date ?></p>
+            <div>
+                <?= $post->excerpt ?>
+
+            </div>
+
+        </article>
     <?php endforeach; ?>
 </body>
+
 </html>
