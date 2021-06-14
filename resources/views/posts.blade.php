@@ -19,7 +19,7 @@
 
                 </a>
             </h1>
-            <p><?= $post->date ?></p>
+            <!-- <p><?= $post->date ?></p> -->
             <div>
                 <?= $post->excerpt ?>
 

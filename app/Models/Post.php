@@ -31,18 +31,21 @@ class Post
 
     public static function all()
     {
-        //1 - find all the files in posts dir and 'collect' them, map over each item, parse them into a document.
-        //2 - with the collection of documents map them building our post object
-        return collect(File::files(resource_path("posts")))
-            ->map(fn($file) => YamlFrontMatter::parseFile($file))
-            ->map(
-                fn($document) => new Post(
-                    $document->title,
-                    $document->excerpt,
-                    $document->date,
-                    $document->body(),
-                    $document->slug
+        return cache()->rememberForever("posts.all", function () {
+            //1 - find all the files in posts dir and 'collect' them, map over each item, parse them into a document.
+            //2 - with the collection of documents map them building our post object
+            return collect(File::files(resource_path("posts")))
+                ->map(fn($file) => YamlFrontMatter::parseFile($file))
+                ->map(
+                    fn($document) => new Post(
+                        $document->title,
+                        $document->excerpt,
+                        $document->date,
+                        $document->body(),
+                        $document->slug
+                    )
                 )
-            );
+                ->sortByDesc("date");
+        });
     }
 }
