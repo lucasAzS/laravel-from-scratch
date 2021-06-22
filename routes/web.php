@@ -28,8 +28,8 @@ Route::get("/", function () {
 
 // {post} here is a wildcard that will be passed to the $slug and will be used in the path
 // we want find a post by its slug and pass it to a view called post
-Route::get("posts/{post}", function ($slug) {
+Route::get("posts/{post}", function ($id) {
     return view("post", [
-        "post" => Post::findOrFail($slug),
+        "post" => Post::findOrFail($id),
     ]);
 });
